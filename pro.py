@@ -1,29 +1,32 @@
+pip install -r requirements.txt
+
+
 import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from datetime import datetime
 from datetime import date
-import json
-import requests
+#import json
+#import requests
 from time import sleep
 
 ## import data from local datasets
-years10 = pd.read_csv(r"/Users/seraj/Desktop/yield-10-years-us.csv")
+years10 = pd.read_csv(r"yield-10-years-us.csv")
 years10 = years10[["Date","Price"]]
 years10.rename({"Price":"Price10y"},axis = 1,inplace = True)
 years10 = years10.iloc[::-1]
 years10["Date"] = pd.to_datetime(years10["Date"])
 years10.set_index("Date",inplace= True)
 
-month3 = pd.read_csv(r"/Users/seraj/Desktop/yield-3-months-us.csv")
+month3 = pd.read_csv(r"yield-3-months-us.csv")
 month3 = month3[["Date","Price"]]
 month3.rename({"Price":"Price3m"},axis = 1,inplace = True)
 month3 = month3.iloc[::-1]
 month3["Date"] = pd.to_datetime(month3["Date"])
 month3.set_index("Date",inplace= True)
 
-indicator_data = pd.read_csv(r"/Users/seraj/Desktop/indicator_data.csv")
+indicator_data = pd.read_csv(r"indicator_data.csv")
 indicator_data = indicator_data.iloc[::-1]
 indicator_data.date = pd.to_datetime(indicator_data.date)
 indicator_data.set_index("date",inplace= True)
